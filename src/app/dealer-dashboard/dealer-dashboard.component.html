@@ -1,0 +1,49 @@
+<mat-card>
+    <h2> Inventory </h2>
+    <table border="1" mat-table [dataSource]="Inventory" class="mat-elevation-z8">
+
+
+        <ng-container matColumnDef="Item">
+            <th mat-header-cell *matHeaderCellDef> Item Name </th>
+            <td mat-cell *matCellDef="let element" align="center"> {{element.Item}} </td>
+        </ng-container> 
+        <ng-container matColumnDef="Quantity">
+            <th mat-header-cell *matHeaderCellDef> Quantity </th>
+            <td mat-cell *matCellDef="let element" align="center"> {{element.Quantity}} </td>
+        </ng-container> 
+
+        <tr mat-header-row *matHeaderRowDef="columns" width=50%></tr>
+        <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+    </table>
+</mat-card>
+
+
+<mat-card-actions style="float: right; position: absolute;top:15%; right : 10% ">
+    <!-- <h3>Actions</h3> -->
+    <mat-card>
+        <button class='ghost-round full-width' (click)="deal()">Create New Deal</button>
+        <button class='ghost-round full-width' (click)="act()">Action</button>
+
+    </mat-card>
+
+    <mat-card>
+            <h2> Contracts </h2>
+            <table border="1" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        
+        
+                <ng-container matColumnDef="user">
+                    <th mat-header-cell *matHeaderCellDef> User Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.user}} </td>
+                </ng-container>
+        
+                <ng-container matColumnDef="Contract">
+                    <th mat-header-cell *matHeaderCellDef> Contract Address </th>
+                    <td mat-cell *matCellDef="let element" align="center"> {{element.Contract}} </td>
+                </ng-container>
+        
+        
+                <tr mat-header-row *matHeaderRowDef="displayedColumns" width=50%></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </mat-card>    
+</mat-card-actions>
