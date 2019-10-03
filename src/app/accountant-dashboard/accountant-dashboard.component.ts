@@ -1,16 +1,22 @@
 import { Component, OnInit } from '@angular/core';
+import {SelectionModel} from '@angular/cdk/collections';
+import { Router } from '@angular/router';
+import {userCall} from "../login/userCall";
+import {detailGet} from "../detailGet";
 
-export interface PeriodicElement {
-  user: string;
-  Contract: string; 
+export interface ContractInfo {
+  email: string;
+  createdOn: string; 
+  status: string; 
+  lUpdate: string; 
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {user : '1', Contract : 'Hy'},
-  {user : '2', Contract : 'He'},
-  {user : '3', Contract : 'Li'},
-  {user : '4', Contract : 'Be'},
-  {user : '5', Contract : 'Bo'}, 
+const PENDING_CONTRACT: ContractInfo[] = [
+  {email : '1', createdOn : '10-03-2019',status:'Active', lUpdate:'10-03-2019'},
+  {email : '2', createdOn : '10-03-2019',status:'Active', lUpdate:'10-03-2019'},
+  {email : '3', createdOn : '10-03-2019',status:'Active', lUpdate:'10-03-2019'},
+  {email : '4', createdOn : '10-03-2019',status:'Active', lUpdate:'10-03-2019'},
+  {email : '5', createdOn : '10-03-2019',status:'Active', lUpdate:'10-03-2019'}, 
 ];
 
 @Component({
@@ -20,8 +26,17 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class AccountantDashboardComponent implements OnInit {
 
+constructor( private _router: Router, private _user:userCall,private _contract:detailGet) { }
+
   ngOnInit(){}
 
-  displayedColumns: string[] = ['user', 'Contract' ];
-  dataSource = ELEMENT_DATA;
+  displayedColumns: string[] = ['email', 'createdOn' ,'status', 'lUpdate', 'Action' ];
+  dataSource = PENDING_CONTRACT;
+
+  call(data){
+
+    console.log("asd"+data.user);
+    this._contract.setContract(data);
+    this._router.navigateByUrl('/DealerAction' );
+  }
 }

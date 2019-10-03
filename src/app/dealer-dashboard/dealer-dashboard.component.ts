@@ -2,16 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import {userCall} from "../login/userCall";
+import {detailGet} from "../detailGet";
 
-export interface PeriodicElement {
-  user: string;
-  Contract: string; 
+export interface ContractInfo {
+  email: string;
+  createdOn: string; 
+  status: string; 
+  lUpdate: string; 
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {user : '1', Contract : 'Hy'},
-  {user : '2', Contract : 'He'}, 
+const PENDING_CONTRACT: ContractInfo[] = [
+  {email : '1', createdOn : '10-03-2019',status:'Active', lUpdate:'10-03-2019'},
+  {email : '2', createdOn : '10-03-2019',status:'Active', lUpdate:'10-03-2019'},
+  {email : '3', createdOn : '10-03-2019',status:'Active', lUpdate:'10-03-2019'},
+  {email : '4', createdOn : '10-03-2019',status:'Active', lUpdate:'10-03-2019'},
+  {email : '5', createdOn : '10-03-2019',status:'Active', lUpdate:'10-03-2019'}, 
 ];
+
 export interface InventoryElement {
   Item: string;
   Quantity: string; 
@@ -30,13 +37,13 @@ const Inventory_DATA: InventoryElement[] = [
 })
 export class DealerDashboardComponent implements OnInit {
 
-  constructor(private _httpClient: HttpClient, private _router: Router  ) { }
+  constructor(private _httpClient: HttpClient, private _router: Router,private _contract:detailGet ) { }
 
   ngOnInit() {
   }
 
-  displayedColumns: string[] = ['user', 'Contract' ];
-  dataSource = ELEMENT_DATA;
+ displayedColumns: string[] = ['email', 'createdOn' ,'status', 'lUpdate', 'Action' ];
+  dataSource = PENDING_CONTRACT;
 
 
   
@@ -47,7 +54,10 @@ export class DealerDashboardComponent implements OnInit {
   deal(){
     this._router.navigateByUrl('/deal');
   }
-  act(){
-    this._router.navigateByUrl('/DealerAction');
+
+  call(data){
+    console.log("asd"+data.user);
+    this._contract.setContract(data);
+    this._router.navigateByUrl('/DealerAction' );
   }
 }

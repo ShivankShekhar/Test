@@ -15,8 +15,8 @@ export class LoginComponent implements OnInit {
   value: String = "Dealer";
 
   Options=["Dealer","User","Accountant"];
-   private _user:userCall
-  constructor(private _httpClient: HttpClient, private _router: Router) { }
+  
+  constructor(private _httpClient: HttpClient, private _router: Router, private _user:userCall) { }
 
   ngOnInit() {
   }
@@ -41,9 +41,8 @@ export class LoginComponent implements OnInit {
       Password: this.password,
       Type:this.value
     }; 
-
+    this._user.setUser(this.email);
     this._router.navigateByUrl('/'+data.Type);
-
     
     this._httpClient.post('http://127.0.0.1:3001/login1', data).subscribe((x) => {
       console.log(x);

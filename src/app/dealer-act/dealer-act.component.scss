@@ -1,6 +1,7 @@
-table {
-    width: 30%;
-  }
+ 
+.tab{
+width: 100%;
+}
 
   .ghost-round {
     cursor: pointer; 
@@ -21,5 +22,17 @@ table {
   }
   
   .full-width {
-    width: 55%;
+    width: 60%;
   } 
+
+  mat-card{
+    width:60%;
+  }
+
+  .act{
+     float: right;
+    width: 40%;
+    top: 15%;
+    position: absolute;
+    right: 10%;
+  }

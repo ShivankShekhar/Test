@@ -1,5 +1,10 @@
 table {
-    width: 30%;
+    width: 100%;
+    align-self: center;
+    border-spacing: 0;
+  tr{
+    height: 45px;
+  }
   }
 
   .ghost-round {
@@ -20,6 +25,37 @@ table {
     transition: all .2s ease;
   }
   
-  .full-width {
+  .edit{
+    height: 100%;
     width: 100%;
+    padding: 20;
+  }
+
+  .full-width {
+    width: 60%;
   } 
+
+  mat-card{
+    margin: 1em; 
+    align-self: center;
+    button{
+      width: 50%;
+      margin-left: 15%
+    }
+  }
+
+  .act{
+     float: right;
+    width: 50%;
+    top: 15%;
+    position: absolute;
+    right: 10%;
+    table{
+      td{
+        button{
+          margin: 10px;
+          width: 100%;
+        }
+      }
+    }
+  }

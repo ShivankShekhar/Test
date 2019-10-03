@@ -1,3 +1,3 @@
 export interface user{
-Email : String;
+Email : String; 
 }

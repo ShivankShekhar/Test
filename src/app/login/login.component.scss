@@ -102,14 +102,13 @@ button:focus {
 }
 
 .content {
-  padding-left: 25px;
-  padding-right: 25px;
+  padding: 5px 25px; 
   display: -webkit-box;
-  display: -webkit-flex;
+  // display: -webkit-flex;
   display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-flow: column;
-  -ms-flex-flow: column;
+  // display: flex;
+  // -webkit-flex-flow: column;
+  // -ms-flex-flow: column;
   flex-flow: column;
   z-index: 5;
 }
@@ -139,6 +138,7 @@ button:focus {
 }
 
 .window {
+
   z-index: 100;
   color: #fff;
   font-family: roboto;

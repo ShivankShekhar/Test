@@ -12,7 +12,8 @@ export class userCall {
     this.user.Email = email;
   }
 
-  getUser(): String {
+  
+  getUser(): String { 
     return this.user.Email;
   }
 

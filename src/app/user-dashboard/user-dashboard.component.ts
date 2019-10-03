@@ -1,16 +1,55 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
+import {SelectionModel} from '@angular/cdk/collections';
  
-export interface PeriodicElement {
-  user: string;
-  Contract: string; 
+export interface Status {
+  date  : string;
+  statusWith: string; 
+  with:string,
+  statusTo:String,
+  To:String
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {user : '1', Contract : 'Hy'},
-  {user : '2', Contract : 'He'},
-  {user : '3', Contract : 'Li'},
-  {user : '4', Contract : 'Be'},
-  {user : '5', Contract : 'Bo'}, 
+export interface ContractInfo {
+  userEmail  : string;
+  Products : {name : String; Price:string}[]; 
+  createdOn:String,
+  currentState:String,
+  Accountant : String
+}
+
+const CONTRACT_STATUS: Status[] = [
+  {
+    date : "01 - 10 - 2019 16:24:20",
+    statusWith :  "Pending With" ,
+    with : "User"
+  },
+  {
+    date : "01 - 10 - 2019 13:24:20",
+    statusWith :  "Pending With" ,
+    with : "Dealer",
+    statusTo:"On Hold",
+    To : "User"
+  },
+  {
+    date : "01 - 10 - 2019 10:24:20",
+    statusWith :  "Initiated By" ,
+    with : "User",
+    statusTo:"Pending with",
+    To : "Dealer"
+  }
+  // {detail : ' name : fsdgfd, sad:Asds'}, 
+
+];
+
+const CONTRACT_INFO:ContractInfo[]=[
+{
+  userEmail : "sdf " ,
+  Products : [{name : "Tractor", Price:"120"},
+              {name : "Engine", Price:"80"} ],
+  createdOn:"01 - 10 - 2019",
+  currentState:" InProcess",
+  Accountant:"abc"
+}
 ];
 
 @Component({
@@ -26,7 +65,9 @@ export class UserDashboardComponent implements OnInit {
 
   ngOnInit(){}
 
-  displayedColumns: string[] = ['user', 'Contract' ];
-  dataSource = ELEMENT_DATA;
+  displayedColumns: string[] = ['detail' ];
+  dataSource = CONTRACT_STATUS;
+
+  contractInfo=CONTRACT_INFO;
 
 }

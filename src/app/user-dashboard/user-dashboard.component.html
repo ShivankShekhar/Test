@@ -1,29 +1,41 @@
-   <mat-card>
-     <h2> Contracts </h2>
-                <table border="1" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-                
-                
-                    <ng-container matColumnDef="user">
-                        <th mat-header-cell *matHeaderCellDef> User Name </th>
-                        <td mat-cell *matCellDef="let element"> {{element.user}} </td>
-                    </ng-container>
-                
-                    <ng-container matColumnDef="Contract">
-                        <th mat-header-cell *matHeaderCellDef> Contract Address </th>
-                        <td mat-cell *matCellDef="let element"> {{element.Contract}} </td>
-                    </ng-container>
-                
-                
-                    <tr mat-header-row *matHeaderRowDef="displayedColumns" width=50%></tr>
-                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                </table>
-                </mat-card> 
+<mat-card>
+    <h2> Status </h2>
+    <table border="1" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-                <mat-card-actions style="float: right; position: absolute;top:20%; right : 10% ">
-                    <h3>Actions</h3>
-                    <mat-card>
-                        <button class='ghost-round full-width'   (click)="getDetail()" >Get Details</button>
-                        <button class='ghost-round full-width'   (click)="accept()" >Accept</button>
-                        <button class='ghost-round full-width' (click)="reject()">Reject</button>
-                    </mat-card>
-                    </mat-card-actions>
+
+        <ng-container matColumnDef="detail">
+            <td mat-cell *matCellDef="let element">
+                Date : {{element.date}}
+                <br> {{element.statusWith}} {{element.with}}
+                <span *ngIf="element.To"> -> {{element.statusTo}} {{element.To}}</span>
+            </td>
+        </ng-container>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</mat-card>
+
+<mat-card-actions class="act">
+    <div>
+        <h3>Actions</h3>
+        <mat-card>
+            <!--<button class='ghost-round full-width' (click)="getDetail()">Get Estimate</button>-->
+            <button class='ghost-round full-width' style="margin-right: 10%" (click)="accept()">Accept</button>
+            <button class='ghost-round full-width' style="margin-right: 10%" (click)="reject()">Reject</button>
+        </mat-card>
+    </div>
+    <div style="margin-top: 10%">
+        <h1> Contract Details </h1>
+        <mat-card *ngFor="let data of contractInfo">
+
+            <mat-label><b>User Email :</b> {{data.userEmail}} </mat-label><br><br>
+            <mat-label><b>Products :</b>
+
+                <div *ngFor="let prod of data.Products"> {{prod.name}} : {{prod.Price}}</div>
+            </mat-label><br>
+            <mat-label><b>Created On :</b> {{data.createdOn}} </mat-label><br><br>
+            <mat-label><b>Current State :</b> {{data.currentState}} </mat-label><br><br>
+            <mat-label><b>Accountant :</b> {{data.Accountant}} </mat-label>
+        </mat-card>
+    </div>
+
+</mat-card-actions>

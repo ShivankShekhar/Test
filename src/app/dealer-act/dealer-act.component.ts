@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 import {userCall} from "../login/userCall";
+import {detailGet} from "../detailGet";
 
 export interface PeriodicElement {
   Contract: string; 
@@ -21,9 +22,12 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class DealerActComponent implements OnInit {
 
 
-  constructor(private _httpClient: HttpClient, private _router: Router  ) { }
+  constructor(private _route: ActivatedRoute,private _httpClient: HttpClient, private _router: Router,private _contract:detailGet ) { }
 
+ data;
   ngOnInit() {
+    this.data=this._contract.getDetail();
+    console.log(this.data);
   }
 
   displayedColumns: string[] = [  'Contract' ];
