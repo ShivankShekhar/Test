@@ -6,15 +6,20 @@ import { user } from "./userDetail";
 })
 
 export class userCall {
-  private user: user = { Email: "" };
+  private user: user = { Email: "",Type:"" };
 
-  setUser(email) {
+  setUser(email, type) {
     this.user.Email = email;
+    this.user.Type = type;
   }
 
   
   getUser(): String { 
     return this.user.Email;
+  }
+  
+  getType(): String { 
+    return this.user.Type;
   }
 
 

@@ -11,7 +11,7 @@ export interface Status {
 
 export interface ContractInfo {
   userEmail  : string;
-  Products : {name : String; Price:string}[]; 
+  Products : {name : String;count:String; Price:string}[]; 
   createdOn:String,
   currentState:String,
   Accountant : String
@@ -44,8 +44,8 @@ const CONTRACT_STATUS: Status[] = [
 const CONTRACT_INFO:ContractInfo[]=[
 {
   userEmail : "sdf " ,
-  Products : [{name : "Tractor", Price:"120"},
-              {name : "Engine", Price:"80"} ],
+  Products : [{name : "Tractor",count:'2', Price:"120"},
+              {name : "Engine",count:'1', Price:"80"} ],
   createdOn:"01 - 10 - 2019",
   currentState:" InProcess",
   Accountant:"abc"

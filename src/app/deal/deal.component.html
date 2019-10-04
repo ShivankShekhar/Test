@@ -1,1 +1,32 @@
-<p>deal works!</p>
+ 
+ 
+
+
+ <div class='container'style="background-color:white;height:50%;top:20%;"> 
+  
+  <div class='window' > 
+    <div class='content'> 
+      <div class='input-fields'>
+
+        <input type='email' placeholder='Email' class='input-line full-width' id="Email" [(ngModel)]="email" >  
+        
+        <select class=' input-line full-width' style="height: 50px;" (change)="this.quantity=$event.target.quantity"> 
+          <option *ngFor="let opt of Material" value={{opt}}  style="color: black">
+              {{opt}}
+          </option>
+        </select>
+
+        <input type='number' placeholder='Quantity' class='input-line full-width'[(ngModel)]="quantity">  
+ 
+      </div>
+      <div><button class='ghost-round full-width'   (click)="deal()" >Deal</button></div>
+ 
+
+      <!-- <mat-card-actions>
+          <button class='ghost-round full-width'   (click)="_loginexec()" >Login</button>
+          <button class='ghost-round full-width' (click)="_login()">Create Account</button>
+      </mat-card-actions> -->
+
+    </div>
+  </div>
+ </div>  

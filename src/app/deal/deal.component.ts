@@ -9,7 +9,11 @@ export class DealComponent implements OnInit {
 
   constructor() { }
 
+Material=["Trator","Engine","Body"];
+quantity=0;
+
   ngOnInit() {
   }
+
 
 }

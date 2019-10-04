@@ -4,14 +4,55 @@ import { ActivatedRoute,Router } from '@angular/router';
 import {userCall} from "../login/userCall";
 import {detailGet} from "../detailGet";
 
-export interface PeriodicElement {
-  Contract: string; 
+export interface Status {
+  date  : string;
+  statusWith: string; 
+  with:string,
+  statusTo:String,
+  To:String
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {Contract : '1'},
-  {Contract : '2'},
-  {Contract : '3'}, 
+export interface ContractInfo {
+  userEmail  : string;
+  Products : {name : String;count:String; Price:string}[]; 
+  createdOn:String,
+  currentState:String,
+  Accountant : String
+}
+
+const CONTRACT_STATUS: Status[] = [
+  {
+    date : "01 - 10 - 2019 16:24:20",
+    statusWith :  "Pending With" ,
+    with : "User"
+  },
+  {
+    date : "01 - 10 - 2019 13:24:20",
+    statusWith :  "Pending With" ,
+    with : "Dealer",
+    statusTo:"On Hold",
+    To : "User"
+  },
+  {
+    date : "01 - 10 - 2019 10:24:20",
+    statusWith :  "Initiated By" ,
+    with : "User",
+    statusTo:"Pending with",
+    To : "Dealer"
+  }
+  // {detail : ' name : fsdgfd, sad:Asds'}, 
+
+];
+
+const CONTRACT_INFO:ContractInfo[]=[
+{
+  userEmail : "sdf " ,
+  Products : [{name : "Tractor",count:'2', Price:"120"},
+              {name : "Engine",count:'1', Price:"80"} ],
+  createdOn:"01 - 10 - 2019",
+  currentState:" InProcess",
+  Accountant:"abc"
+}
 ];
 
 @Component({
@@ -22,16 +63,22 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class DealerActComponent implements OnInit {
 
 
-  constructor(private _route: ActivatedRoute,private _httpClient: HttpClient, private _router: Router,private _contract:detailGet ) { }
+  constructor(private _route: ActivatedRoute,private _httpClient: HttpClient, private _router: Router,private _contract:detailGet,private _user:userCall ) { }
 
  data;
+ type;
+
   ngOnInit() {
     this.data=this._contract.getDetail();
-    console.log(this.data);
+    this.type=this._user.getType();
   }
 
-  displayedColumns: string[] = [  'Contract' ];
-  dataSource = ELEMENT_DATA;
+isDealer(){ 
+  return this.type=="Dealer";
+}
+  displayedColumns: string[] = ['detail' ];
+  dataSource = CONTRACT_STATUS;
 
+  contractInfo=CONTRACT_INFO;
 
 }

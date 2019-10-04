@@ -29,8 +29,21 @@
 
             <mat-label><b>User Email :</b> {{data.userEmail}} </mat-label><br><br>
             <mat-label><b>Products :</b>
-
-                <div *ngFor="let prod of data.Products"> {{prod.name}} : {{prod.Price}}</div>
+                <table border=1 style="border-spacing: 0;margin-left: 10%;width: 50%" >
+                    <tr>
+                        <th>Material</th>
+                        <th>Count</th>
+                        <th>Price</th>
+                    </tr>
+                    <tr  *ngFor="let prod of data.Products">
+                        <td>{{prod.name}}</td>
+                        <td>{{prod.count}}</td>
+                        <td>{{prod.Price}}</td>
+                    </tr>
+                </table>
+                <!--<div *ngFor="let prod of data.Products">
+                     {{prod.name}} : {{prod.Price}}
+                </div>-->
             </mat-label><br>
             <mat-label><b>Created On :</b> {{data.createdOn}} </mat-label><br><br>
             <mat-label><b>Current State :</b> {{data.currentState}} </mat-label><br><br>
