@@ -46,10 +46,8 @@ export class LoginComponent implements OnInit {
     
     this._httpClient.post('http://127.0.0.1:3001/login1', data).subscribe((x) => {
       console.log(x);
-      if (x == "True") {
-        console.log('/'+data.Type);
-        this._user.setUser(data.Email,data.Type); 
-        // window.open("http://localhost:3001/transact", "_blank");
+      if (x == "True") { 
+        this._user.setUser(data.Email,data.Type);  
         this._router.navigateByUrl('/'+data.Type);
       }
     });
